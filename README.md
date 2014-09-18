@@ -35,14 +35,14 @@ var Call = RemoteEvented.extend( socket, {
   },
 
   // You can bind events directly from extend as `findhit-evented`
-  on: {
+  $on: {
     ringing: function () {
       // ...
     },
   },
 
   // And now from remote party.
-  onRemote: {
+  $onRemote: {
 
     answer: function ( e ) {
       this.stopRing();
