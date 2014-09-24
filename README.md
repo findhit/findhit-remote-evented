@@ -22,7 +22,7 @@ var socket;
 
 var RemoteEvented = require('findhit-remote-evented');
 
-var Call = RemoteEvented.extend( socket, {
+var Call = RemoteEvented.extend({
 
   // you can specify methods as `findhit-class`
   initialize: function ( my, cool, params ) {
@@ -31,12 +31,12 @@ var Call = RemoteEvented.extend( socket, {
 
   ring: function () {
     // ...
-    this.fire('ringing');
+    this.fire('ring');
   },
 
   // You can bind events directly from extend as `findhit-evented`
   $on: {
-    ringing: function () {
+    ring: function () {
       // ...
     },
   },
@@ -52,12 +52,16 @@ var Call = RemoteEvented.extend( socket, {
 
 });
 
+// We could extend it to a new class and setup it with a specific socket.
+// In this case we will setup directly on current class `.setup( namespace, socket )`
+Call.setup( 'VideoCall', socket );
+
 // When you create an instance, another party will create one also
 var bruno = new Call();
 
 // You can bind or fire events as `findhit-evented`
-bruno.fire('ringing');
-bruno.on('ringing stopped-ringing', function () {
+bruno.fire('ring');
+bruno.on('ring ring-stopped', function () {
   // ...
 });
 bruno.once('answered', function () {
@@ -65,8 +69,8 @@ bruno.once('answered', function () {
 });
 
 // And now from remote party
-bruno.fireRemote( 'ringing' );
-bruno.onRemote( 'ringing stopped-ringing', function () {
+bruno.fireOnRemote( 'ring' );
+bruno.onRemote( 'ring ring-stopped', function () {
   // ...
 });
 bruno.onceRemote('answered', function () {

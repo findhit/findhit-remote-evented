@@ -1,0 +1,55 @@
+{
+  "name": "findhit-remote-evented",
+  "description": "javascript remote evented driven with engine.io built on top of findhit-evented",
+  "version": "0.0.1",
+  "author": "José Moreira <jose.moreira@findhit.com>",
+  "contributors": [
+    {
+      "name": "José Moreira",
+      "email": "jose.moreira@findhit.com"
+    },
+    {
+      "name": "Bruno Casanova",
+      "email": "bruno.casanova@findhit.com"
+    },
+    {
+      "name": "Gabriel Conceição",
+      "email": "gabriel.conceicao@findhit.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/findhit/findhit-remote-evented.git"
+  },
+  "bugs": {
+    "url": "https://github.com/findhit/findhit-remote-evented/issues"
+  },
+  "dependencies": {
+    "findhit-evented": "^0.0.3",
+    "findhit-util": "^0.2.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "engine.io": "^1.4.0",
+    "engine.io-client": "^1.4.0",
+    "mocha": "^1.21.3",
+    "sinon": "^1.10.3"
+  },
+  "keywords": [
+    "evented",
+    "event",
+    "eventual",
+    "emitter",
+    "extendable",
+    "extend",
+    "nodejs"
+  ],
+  "main": "index",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --globals setImmediate,clearImmediate --check-leaks --colors -t 10000 --reporter spec $(find test/* -name '*.test.js')"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
+  "license": "GPL v3"
+}
